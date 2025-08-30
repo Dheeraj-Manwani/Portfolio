@@ -1,231 +1,342 @@
-import { useState, useEffect, useRef } from 'react';
-import { CheckCircle, Heart, Target, Users } from 'lucide-react';
+import { motion } from "framer-motion";
+import {
+  CheckCircle,
+  Heart,
+  Target,
+  Users,
+  Star,
+  Award,
+  Code,
+  Rocket,
+} from "lucide-react";
 
 const timeline = [
   {
-    year: '2020',
-    title: 'Started Coding Journey',
-    description: 'Discovered my passion for programming and began learning JavaScript and web development fundamentals.'
+    year: "2020",
+    title: "Started Coding Journey",
+    description:
+      "Discovered my passion for programming and began learning JavaScript and web development fundamentals.",
+    icon: Code,
   },
   {
-    year: '2021',
-    title: 'First Full-Stack Project',
-    description: 'Built my first complete web application using React and Node.js, sparking my love for full-stack development.'
+    year: "2021",
+    title: "First Full-Stack Project",
+    description:
+      "Built my first complete web application using React and Node.js, sparking my love for full-stack development.",
+    icon: Rocket,
   },
   {
-    year: '2022',
-    title: 'Professional Experience',
-    description: 'Joined a startup as a junior developer, working on real-world projects and learning industry best practices.'
+    year: "2022",
+    title: "Professional Experience",
+    description:
+      "Joined a startup as a junior developer, working on real-world projects and learning industry best practices.",
+    icon: Users,
   },
   {
-    year: '2023',
-    title: 'Freelance Success',
-    description: 'Started freelancing and helped multiple clients build their digital presence with custom web solutions.'
+    year: "2023",
+    title: "Freelance Success",
+    description:
+      "Started freelancing and helped multiple clients build their digital presence with custom web solutions.",
+    icon: Star,
   },
   {
-    year: '2024',
-    title: 'Continuous Growth',
-    description: 'Focusing on modern technologies and building trust-based relationships with clients and collaborators.'
-  }
+    year: "2024",
+    title: "Continuous Growth",
+    description:
+      "Focusing on modern technologies and building trust-based relationships with clients and collaborators.",
+    icon: Award,
+  },
 ];
 
 const values = [
   {
     icon: Heart,
-    title: 'Honesty',
-    description: 'I believe in transparent communication and delivering exactly what I promise, no more, no less.'
+    title: "Honesty",
+    description:
+      "I believe in transparent communication and delivering exactly what I promise, no more, no less.",
+    color: "text-red-500",
   },
   {
     icon: CheckCircle,
-    title: 'Reliability',
-    description: 'You can count on me to meet deadlines and maintain high-quality standards in every project.'
+    title: "Reliability",
+    description:
+      "You can count on me to meet deadlines and maintain high-quality standards in every project.",
+    color: "text-green-500",
   },
   {
     icon: Users,
-    title: 'Collaboration',
-    description: 'I work best in teams and love contributing to shared goals with positive energy.'
+    title: "Collaboration",
+    description:
+      "I work best in teams and love contributing to shared goals with positive energy.",
+    color: "text-blue-500",
   },
   {
     icon: Target,
-    title: 'Excellence',
-    description: 'I\'m committed to continuous learning and improving my craft with every project.'
-  }
+    title: "Excellence",
+    description:
+      "I'm committed to continuous learning and improving my craft with every project.",
+    color: "text-purple-500",
+  },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
+
+const headerVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: "easeOut" },
+  },
+};
+
+const timelineVariants = {
+  hidden: { opacity: 0, x: -30 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
+
 const AboutSection = () => {
-  const [visibleTimeline, setVisibleTimeline] = useState<number[]>([]);
-  const [visibleValues, setVisibleValues] = useState<number[]>([]);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Animate timeline items
-            timeline.forEach((_, index) => {
-              setTimeout(() => {
-                setVisibleTimeline(prev => [...prev, index]);
-              }, index * 200);
-            });
-
-            // Animate values with slight delay
-            setTimeout(() => {
-              values.forEach((_, index) => {
-                setTimeout(() => {
-                  setVisibleValues(prev => [...prev, index]);
-                }, index * 150);
-              });
-            }, 500);
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section id="about" ref={sectionRef} className="py-20 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+    <section
+      id="about"
+      className="py-16 md:py-20 bg-gradient-to-b from-background to-accent/5 relative overflow-hidden"
+    >
+      {/* Background decorative elements */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 0.03 }}
+        viewport={{ once: true }}
+        transition={{ duration: 2 }}
+        className="absolute inset-0"
+      >
+        <div className="absolute top-20 left-20 w-48 h-48 bg-primary/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-20 w-64 h-64 bg-secondary/20 rounded-full blur-3xl"></div>
+      </motion.div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <motion.div
+          variants={headerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          className="text-center mb-12 md:mb-16"
+        >
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gradient mb-4 md:mb-6">
             About Me
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            I'm passionate about creating digital solutions that make a real difference. 
-            Here's my journey and what drives me.
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            I'm passionate about creating digital solutions that make a real
+            difference. Here's my journey and what drives me forward.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start"
+        >
           {/* Personal Story */}
-          <div className="space-y-8">
+          <motion.div variants={itemVariants} className="space-y-8">
             <div>
-              <h3 className="text-2xl font-semibold text-foreground mb-4">
+              <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-6">
                 My Story
               </h3>
-              <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <div className="space-y-4 text-muted-foreground leading-relaxed text-base md:text-lg">
                 <p>
-                  Hi! I'm Alex, a passionate full-stack developer who believes technology 
-                  should solve real problems and create meaningful experiences. My journey 
-                  into programming started with curiosity and has evolved into a deep 
-                  commitment to building honest, reliable digital solutions.
+                  Hi! I'm Dheeraj, a passionate full-stack developer who
+                  believes technology should solve real problems and create
+                  meaningful experiences. My journey into programming started
+                  with curiosity and has evolved into a deep commitment to
+                  building honest, reliable digital solutions.
                 </p>
                 <p>
-                  What sets me apart is my focus on trust and transparency. I believe in 
-                  clear communication, realistic timelines, and delivering exactly what 
-                  I promise. Whether working with clients or collaborating with teams, 
-                  I bring reliability and positive energy to every project.
+                  What sets me apart is my focus on trust and transparency. I
+                  believe in clear communication, realistic timelines, and
+                  delivering exactly what I promise. Whether working with
+                  clients or collaborating with teams, I bring reliability and
+                  positive energy to every project.
                 </p>
                 <p>
-                  When I'm not coding, you'll find me exploring new technologies, 
-                  contributing to open-source projects, or sharing knowledge with the 
-                  developer community. I'm always excited to take on new challenges 
-                  and learn from every project.
+                  When I'm not coding, you'll find me exploring new
+                  technologies, contributing to open-source projects, or sharing
+                  knowledge with the developer community. I'm always excited to
+                  take on new challenges and learn from every project.
                 </p>
               </div>
             </div>
 
             {/* Core Values */}
             <div>
-              <h3 className="text-2xl font-semibold text-foreground mb-6">
+              <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-6">
                 Core Values
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {values.map((value, index) => {
                   const Icon = value.icon;
-                  const isVisible = visibleValues.includes(index);
-                  
+
                   return (
-                    <div
+                    <motion.div
                       key={value.title}
-                      className={`bg-card border border-border rounded-lg p-4 transition-all duration-500 ${
-                        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                      }`}
-                      style={{ transitionDelay: `${index * 150}ms` }}
+                      variants={itemVariants}
+                      whileHover={{
+                        y: -4,
+                        scale: 1.02,
+                        transition: { duration: 0.2, ease: "easeOut" },
+                      }}
+                      className="bg-card border border-border rounded-xl p-4 md:p-5 hover:shadow-lg transition-all duration-300 group"
                     >
                       <div className="flex items-start gap-3">
-                        <div className="bg-primary/10 p-2 rounded-lg flex-shrink-0">
-                          <Icon className="h-5 w-5 text-primary" />
-                        </div>
+                        <motion.div
+                          whileHover={{ rotate: 5, scale: 1.1 }}
+                          className={`bg-primary/10 p-2.5 rounded-lg flex-shrink-0 group-hover:bg-primary/20 transition-colors duration-300`}
+                        >
+                          <Icon className={`h-5 w-5 ${value.color}`} />
+                        </motion.div>
                         <div>
-                          <h4 className="font-semibold text-foreground mb-1">
+                          <h4 className="font-semibold text-foreground mb-2 text-base">
                             {value.title}
                           </h4>
-                          <p className="text-sm text-muted-foreground">
+                          <p className="text-sm text-muted-foreground leading-relaxed">
                             {value.description}
                           </p>
                         </div>
                       </div>
-                    </div>
+                    </motion.div>
                   );
                 })}
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Timeline */}
-          <div>
-            <h3 className="text-2xl font-semibold text-foreground mb-8">
+          <motion.div variants={itemVariants}>
+            <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-8">
               My Journey
             </h3>
-            
+
             <div className="relative">
               {/* Timeline Line */}
-              <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-border"></div>
-              
-              <div className="space-y-8">
+              <motion.div
+                initial={{ height: 0 }}
+                whileInView={{ height: "100%" }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.5, delay: 0.5 }}
+                className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-secondary to-accent"
+              />
+
+              <div className="space-y-6 md:space-y-8">
                 {timeline.map((item, index) => {
-                  const isVisible = visibleTimeline.includes(index);
-                  
+                  const Icon = item.icon;
+
                   return (
-                    <div
+                    <motion.div
                       key={item.year}
-                      className={`relative flex items-start gap-6 transition-all duration-500 ${
-                        isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
-                      }`}
-                      style={{ transitionDelay: `${index * 200}ms` }}
+                      variants={timelineVariants}
+                      whileHover={{ x: 8 }}
+                      className="relative flex items-start gap-6"
                     >
                       {/* Timeline Node */}
                       <div className="relative">
-                        <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-primary-foreground text-sm font-semibold">
-                          {item.year.slice(-2)}
-                        </div>
+                        <motion.div
+                          whileHover={{ scale: 1.2, rotate: 360 }}
+                          transition={{ duration: 0.3 }}
+                          className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-primary-foreground text-sm font-semibold shadow-lg"
+                        >
+                          <Icon className="h-4 w-4" />
+                        </motion.div>
                         {index < timeline.length - 1 && (
                           <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-0.5 h-8 bg-border"></div>
                         )}
                       </div>
-                      
+
                       {/* Content */}
-                      <div className="flex-1 pb-8">
-                        <div className="bg-card border border-border rounded-lg p-4">
-                          <div className="flex items-center gap-2 mb-2">
-                            <span className="text-sm font-medium text-primary">
+                      <div className="flex-1 pb-6 md:pb-8">
+                        <motion.div
+                          whileHover={{ scale: 1.02 }}
+                          className="bg-card border border-border rounded-xl p-4 md:p-5 hover:shadow-lg transition-all duration-300"
+                        >
+                          <div className="flex items-center gap-2 mb-3">
+                            <span className="text-sm font-medium text-primary bg-primary/10 px-2 py-1 rounded-md">
                               {item.year}
                             </span>
-                            <span className="text-sm text-muted-foreground">•</span>
-                            <h4 className="font-semibold text-foreground">
+                            <span className="text-sm text-muted-foreground">
+                              •
+                            </span>
+                            <h4 className="font-semibold text-foreground text-base md:text-lg">
                               {item.title}
                             </h4>
                           </div>
-                          <p className="text-sm text-muted-foreground">
+                          <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
                             {item.description}
                           </p>
-                        </div>
+                        </motion.div>
                       </div>
-                    </div>
+                    </motion.div>
                   );
                 })}
               </div>
             </div>
+          </motion.div>
+        </motion.div>
+
+        {/* Call to Action */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="text-center mt-16 md:mt-20"
+        >
+          <div className="bg-card/50 border border-border rounded-2xl p-6 md:p-8 backdrop-blur-sm">
+            <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-4">
+              Ready to Work Together?
+            </h3>
+            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
+              Let's discuss your project and see how I can help bring your
+              vision to life.
+            </p>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => {
+                const element = document.getElementById("contact");
+                if (element) {
+                  element.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
+                }
+              }}
+              className="btn-hero"
+            >
+              Let's Connect
+            </motion.button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

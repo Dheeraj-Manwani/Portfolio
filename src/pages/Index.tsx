@@ -4,9 +4,11 @@ import HeroSection from "@/components/HeroSection";
 import SkillsSection from "@/components/SkillsSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import AboutSection from "@/components/AboutSection";
+import ContactSection from "@/components/ContactSection";
 import ContactModal from "@/components/ContactModal";
 import ContactFloat from "@/components/ContactFloat";
 import Footer from "@/components/Footer";
+import { NewProjectsSection } from "@/components/NewProjectsSection";
 
 const Index = () => {
   const [isDark, setIsDark] = useState(false);
@@ -55,21 +57,29 @@ const Index = () => {
     setIsContactModalOpen(false);
   };
 
+  const scrollToContact = () => {
+    const element = document.getElementById("contact");
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <Navigation
-        isDark={isDark}
-        toggleTheme={toggleTheme}
-        openContactModal={openContactModal}
-      />
+      <Navigation isDark={isDark} toggleTheme={toggleTheme} />
 
       {/* Main Content */}
       <main>
-        <HeroSection onContactClick={openContactModal} />
+        <HeroSection onContactClick={scrollToContact} />
         <SkillsSection />
-        <ProjectsSection />
+        {/* <ProjectsSection /> */}
+        <NewProjectsSection />
         <AboutSection />
+        <ContactSection />
       </main>
 
       {/* Footer */}
