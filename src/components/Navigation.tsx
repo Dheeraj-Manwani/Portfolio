@@ -146,7 +146,7 @@ const Navigation = ({
             onClick={() => scrollToSection("home")}
             className="text-2xl font-bold text-gradient hover:scale-105 transition-transform duration-300 flex items-center justify-center"
           >
-            <img src={logo} alt="logo" className="w-12 h-12 mt" />
+            <img src={logo} alt="logo" className="w-12 h-12 mt-2" />
           </motion.button>
           {/* </motion.div> */}
 
