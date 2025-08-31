@@ -8,6 +8,10 @@ import {
   MapPin,
   Phone,
   Clock,
+  Copy,
+  ExternalLink,
+  PhoneCall,
+  X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -80,8 +84,36 @@ const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
+  // Contact modal states
+  const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
+  const [isPhoneModalOpen, setIsPhoneModalOpen] = useState(false);
+
   const validateEmail = (email: string) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  // Contact action functions
+  const copyToClipboard = async (text: string, type: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      toast.success(`${type} copied to clipboard!`);
+    } catch (err) {
+      toast.error("Failed to copy to clipboard");
+    }
+  };
+
+  const openEmailClient = () => {
+    const email = "dkmanwani2000@gmail.com";
+    const subject = "Let's Connect";
+    const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
+    window.open(mailtoLink, "_blank");
+    toast.success("Opening email client...");
+  };
+
+  const makePhoneCall = () => {
+    const phoneNumber = "+919340291210";
+    window.open(`tel:${phoneNumber}`, "_blank");
+    toast.success("Initiating phone call...");
   };
 
   const validateForm = (): boolean => {
@@ -141,7 +173,7 @@ const ContactSection = () => {
         // const handleClick = async () => {
         // await onTrigger();
         const end = Date.now() + 3 * 1000; // 3 seconds
-        const colors = ["#a786ff", "#fd8bbc", "#eca184", "#f8deb1"];
+        const colors = ["#8F8DFF", "#3B47B8"];
 
         const frame = () => {
           if (Date.now() > end) return;
@@ -213,9 +245,8 @@ const ContactSection = () => {
             Let's Connect
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Have a project in mind or just want to chat? I'd love to hear from
-            you! Fill out the form below and I'll get back to you within 24
-            hours.
+            Want to chat? I'd love to hear from you! Fill out the form below and
+            I'll get back to you within 24 hours.
           </p>
         </motion.div>
 
@@ -233,36 +264,49 @@ const ContactSection = () => {
                 Get in Touch
               </h3>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                I'm always open to discussing new opportunities, interesting
-                projects, or just having a friendly chat about technology and
-                development.
+                I'm always open to discussing interesting projects, or just
+                having a friendly chat about technology and development.
               </p>
             </div>
 
             <div className="space-y-6">
               <motion.div
-                whileHover={{ x: 8 }}
-                className="flex items-center gap-4 p-4 bg-card/50 border border-border rounded-xl hover:shadow-md transition-all duration-300"
+                whileHover={{ x: 8, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => setIsEmailModalOpen(true)}
+                className="flex items-center gap-4 p-4 bg-card/50 border border-border rounded-xl hover:shadow-md transition-all duration-300 cursor-pointer group"
               >
-                <div className="bg-primary/10 p-3 rounded-lg">
+                <div className="bg-primary/10 p-3 rounded-lg group-hover:bg-primary/20 transition-colors duration-300">
                   <Mail className="h-6 w-6 text-primary" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground">Email</h4>
-                  <p className="text-muted-foreground">dheeraj@example.com</p>
+                  <p className="text-muted-foreground group-hover:text-primary transition-colors duration-300">
+                    dkmanwani2000@gmail.com
+                  </p>
+                </div>
+                <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <ExternalLink className="h-4 w-4 text-primary" />
                 </div>
               </motion.div>
 
               <motion.div
-                whileHover={{ x: 8 }}
-                className="flex items-center gap-4 p-4 bg-card/50 border border-border rounded-xl hover:shadow-md transition-all duration-300"
+                whileHover={{ x: 8, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => setIsPhoneModalOpen(true)}
+                className="flex items-center gap-4 p-4 bg-card/50 border border-border rounded-xl hover:shadow-md transition-all duration-300 cursor-pointer group"
               >
-                <div className="bg-secondary/10 p-3 rounded-lg">
+                <div className="bg-secondary/10 p-3 rounded-lg group-hover:bg-secondary/20 transition-colors duration-300">
                   <Phone className="h-6 w-6 text-secondary" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground">Phone</h4>
-                  <p className="text-muted-foreground">+1 (555) 123-4567</p>
+                  <p className="text-muted-foreground group-hover:text-secondary transition-colors duration-300">
+                    +91 934-029-1210
+                  </p>
+                </div>
+                <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <PhoneCall className="h-4 w-4 text-secondary" />
                 </div>
               </motion.div>
 
@@ -566,6 +610,156 @@ const ContactSection = () => {
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Email Contact Modal */}
+      {isEmailModalOpen && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black/70 backdrop-blur-sm animate-fade-in"
+            onClick={() => setIsEmailModalOpen(false)}
+          />
+
+          {/* Modal */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.2 }}
+            className="relative bg-background border border-border rounded-xl shadow-2xl w-full max-w-md z-10"
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between p-6 border-b border-border">
+              <div className="flex items-center gap-3">
+                <div className="bg-primary/10 p-3 rounded-lg">
+                  <Mail className="h-6 w-6 text-primary" />
+                </div>
+                <h2 className="text-xl font-semibold text-foreground">
+                  Email Contact
+                </h2>
+              </div>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsEmailModalOpen(false)}
+                className="hover:bg-muted rounded-lg"
+              >
+                <X className="h-5 w-5" />
+              </Button>
+            </div>
+
+            {/* Content */}
+            <div className="p-6 space-y-6">
+              <div className="text-center">
+                <p className="text-lg text-muted-foreground mb-2">
+                  dkmanwani2000@gmail.com
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  Choose an action below
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                <Button
+                  onClick={openEmailClient}
+                  className="w-full bg-primary hover:bg-primary/90 text-white"
+                  size="lg"
+                >
+                  <Mail className="mr-2 h-5 w-5" />
+                  Send Email
+                </Button>
+
+                <Button
+                  onClick={() =>
+                    copyToClipboard("dkmanwani2000@gmail.com", "Email")
+                  }
+                  variant="outline"
+                  className="w-full"
+                  size="lg"
+                >
+                  <Copy className="mr-2 h-5 w-5" />
+                  Copy Email
+                </Button>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      )}
+
+      {/* Phone Contact Modal */}
+      {isPhoneModalOpen && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black/70 backdrop-blur-sm animate-fade-in"
+            onClick={() => setIsPhoneModalOpen(false)}
+          />
+
+          {/* Modal */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.2 }}
+            className="relative bg-background border border-border rounded-xl shadow-2xl w-full max-w-md z-10"
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between p-6 border-b border-border">
+              <div className="flex items-center gap-3">
+                <div className="bg-secondary/10 p-3 rounded-lg">
+                  <Phone className="h-6 w-6 text-secondary" />
+                </div>
+                <h2 className="text-xl font-semibold text-foreground">
+                  Phone Contact
+                </h2>
+              </div>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsPhoneModalOpen(false)}
+                className="hover:bg-muted rounded-lg"
+              >
+                <X className="h-5 w-5" />
+              </Button>
+            </div>
+
+            {/* Content */}
+            <div className="p-6 space-y-6">
+              <div className="text-center">
+                <p className="text-lg text-muted-foreground mb-2">
+                  +91 934-029-1210
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  Choose an action below
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                <Button
+                  onClick={makePhoneCall}
+                  className="w-full bg-secondary hover:bg-secondary/90 text-white"
+                  size="lg"
+                >
+                  <PhoneCall className="mr-2 h-5 w-5" />
+                  Make Call
+                </Button>
+
+                <Button
+                  onClick={() =>
+                    copyToClipboard("+919340291210", "Phone number")
+                  }
+                  variant="outline"
+                  className="w-full"
+                  size="lg"
+                >
+                  <Copy className="mr-2 h-5 w-5" />
+                  Copy Number
+                </Button>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      )}
     </section>
   );
 };

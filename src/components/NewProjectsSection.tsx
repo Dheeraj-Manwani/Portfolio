@@ -3,16 +3,27 @@ import { ExternalLink, Github, Code, Clock, Zap } from "lucide-react";
 
 const projects = [
   {
-    title: "E-commerce Platform",
+    title: "Pulse - Feel the rhythm",
     description:
-      "A full-stack e-commerce solution with user authentication, product management, and secure payment processing.",
+      "A responsive social media platform with trending section, searches and many more functionalities.",
     video:
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-    poster:
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=450",
-    tags: ["React", "Node.js", "MongoDB", "Stripe"],
-    githubUrl: "#",
-    liveUrl: "#",
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    poster: import.meta.env.VITE_CLOUDFRONT_URL + "/full_logo.png",
+    tags: ["Next.js", "Tanstack Query", "Shadcn UI", "Prisma"],
+    githubUrl: "https://github.com/Dheeraj-Manwani/pulse-social-media",
+    liveUrl: "https://pulse-social-media-pi.vercel.app/",
+    color: "accent",
+    status: "completed",
+  },
+  {
+    title: "Better Gondia Mitra",
+    description:
+      "A complaint management web application which provides an end to end solution for complaint management for both users and admins.",
+    video: import.meta.env.VITE_CLOUDFRONT_URL + "/better-gondia.mp4",
+    poster: import.meta.env.VITE_CLOUDFRONT_URL + "/better-gondia.png",
+    tags: ["Next.js", "Prisma", "PostgreSQL", "TailwindCSS"],
+    githubUrl: "https://github.com/Dheeraj-Manwani/better-gondia-bot",
+    liveUrl: "https://better-gondia-bot.vercel.app/",
     color: "primary",
     status: "completed",
   },
@@ -31,20 +42,7 @@ const projects = [
     status: "development",
     progress: 75,
   },
-  {
-    title: "Weather Dashboard",
-    description:
-      "A responsive weather application with location-based forecasts, interactive charts, and personalized weather alerts.",
-    video:
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-    poster:
-      "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=450",
-    tags: ["React", "Chart.js", "OpenWeather API", "PWA"],
-    githubUrl: "#",
-    liveUrl: "#",
-    color: "accent",
-    status: "completed",
-  },
+
   {
     title: "Analytics Dashboard",
     description:
@@ -186,9 +184,14 @@ export function NewProjectsSection() {
                 </motion.div>
               )}
 
-              {/* Video Preview */}
               <div className="relative overflow-hidden">
-                <video
+                <img
+                  src={project.poster}
+                  alt={project.title}
+                  className="w-full h-40 md:h-48 object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                />
+                {/* Video Preview */}
+                {/* <video
                   src={project.video}
                   poster={project.poster}
                   className="w-full h-40 md:h-48 object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
@@ -200,7 +203,7 @@ export function NewProjectsSection() {
                   onMouseLeave={(e) => e.currentTarget.pause()}
                 />
 
-                {/* Video Overlay */}
+               
                 <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <motion.div
                     initial={{ scale: 0 }}
@@ -209,7 +212,7 @@ export function NewProjectsSection() {
                   >
                     <Zap className="w-5 h-5 text-white" />
                   </motion.div>
-                </div>
+                </div> */}
 
                 {/* Development Progress Bar */}
                 {project.status === "development" && project.progress && (
@@ -254,7 +257,7 @@ export function NewProjectsSection() {
                   )}
                 </div>
 
-                <p className="text-muted-foreground mb-4 text-sm md:text-base leading-relaxed line-clamp-3">
+                <p className="text-muted-foreground mb-4 text-sm md:text-base leading-relaxed line-clamp-4">
                   {project.description}
                 </p>
 
@@ -284,6 +287,8 @@ export function NewProjectsSection() {
                     href={project.githubUrl}
                     className="flex-1 text-center border border-primary text-primary hover:bg-primary hover:text-primary-foreground px-4 py-2.5 rounded-lg transition-all duration-200 text-sm font-medium flex items-center justify-center space-x-2 hover:shadow-md active:scale-95"
                     data-testid={`project-${index}-github`}
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <Github className="w-4 h-4" />
                     <span>View Code</span>
@@ -294,6 +299,8 @@ export function NewProjectsSection() {
                       href={project.liveUrl}
                       className="flex-1 text-center bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2.5 rounded-lg transition-all duration-200 text-sm font-medium flex items-center justify-center space-x-2 hover:shadow-md active:scale-95"
                       data-testid={`project-${index}-live`}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       <ExternalLink className="w-4 h-4" />
                       <span>Live Demo</span>

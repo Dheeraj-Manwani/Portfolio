@@ -5,6 +5,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
+import confetti from "canvas-confetti";
+import { BorderTrail } from "./BorderTrail";
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -74,11 +76,7 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
 
     setIsSubmitting(true);
 
-    // Simulate form submission
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      setIsSuccess(true);
-
       const mailBackend = import.meta.env.VITE_MAIL_BACKEND;
 
       const response = await fetch(mailBackend, {
@@ -88,12 +86,41 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
 
       if (!response.ok) {
         toast.error("Failed to send message");
+        setIsSuccess(false);
         return;
       } else {
         toast.success("Message sent successfully");
         setFormData({ name: "", email: "", subject: "", message: "" });
-        setIsSuccess(false);
-        onClose();
+        setIsSuccess(true);
+
+        const end = Date.now() + 3 * 1000;
+        const colors = ["#8F8DFF", "#3B47B8"];
+
+        const frame = () => {
+          if (Date.now() > end) return;
+
+          confetti({
+            particleCount: 2,
+            angle: 60,
+            spread: 55,
+            startVelocity: 60,
+            origin: { x: 0, y: 0.5 },
+            colors: colors,
+          });
+          confetti({
+            particleCount: 2,
+            angle: 120,
+            spread: 55,
+            startVelocity: 60,
+            origin: { x: 1, y: 0.5 },
+            colors: colors,
+          });
+
+          requestAnimationFrame(frame);
+        };
+
+        frame();
+        // };
       }
     } catch (error) {
       console.error("Form submission error:", error);
@@ -112,15 +139,15 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/50 backdrop-blur-sm animate-fade-in"
+        className="absolute inset-0 bg-black/70 backdrop-blur-sm animate-fade-in"
         onClick={onClose}
       />
 
       {/* Modal */}
-      <div className="relative bg-background border border-border rounded-xl shadow-2xl w-full max-w-md animate-scale-in">
+      <div className="relative bg-background border border-border rounded-xl shadow-2xl w-full max-w-md z-10 animate-scale-in">
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-border">
           <div className="flex items-center gap-3">

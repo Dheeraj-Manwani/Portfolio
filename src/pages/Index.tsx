@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import SkillsSection from "@/components/SkillsSection";
-import ProjectsSection from "@/components/ProjectsSection";
 import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
 import ContactModal from "@/components/ContactModal";
@@ -68,25 +67,48 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div
+      className={`min-h-screen bg-background transition-all duration-300 ${
+        isContactModalOpen ? "" : ""
+      }`}
+    >
       {/* Navigation */}
-      <Navigation isDark={isDark} toggleTheme={toggleTheme} />
+      <Navigation
+        isDark={isDark}
+        toggleTheme={toggleTheme}
+        isModalOpen={isContactModalOpen}
+      />
 
       {/* Main Content */}
-      <main>
-        <HeroSection onContactClick={scrollToContact} />
+      <main
+        className={`transition-all duration-300 ${
+          isContactModalOpen ? "" : ""
+        }`}
+      >
+        <HeroSection onContactClick={openContactModal} />
         <SkillsSection />
-        {/* <ProjectsSection /> */}
         <NewProjectsSection />
         <AboutSection />
         <ContactSection />
       </main>
 
       {/* Footer */}
-      <Footer />
+      <div
+        className={`transition-all duration-300 ${
+          isContactModalOpen ? "backdrop-blur-sm" : ""
+        }`}
+      >
+        <Footer />
+      </div>
 
       {/* Floating Contact Button */}
-      <ContactFloat onClick={openContactModal} />
+      <div
+        className={`transition-all duration-300 ${
+          isContactModalOpen ? "backdrop-blur-sm" : ""
+        }`}
+      >
+        <ContactFloat onClick={openContactModal} />
+      </div>
 
       {/* Contact Modal */}
       <ContactModal isOpen={isContactModalOpen} onClose={closeContactModal} />

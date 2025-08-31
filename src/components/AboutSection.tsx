@@ -8,43 +8,46 @@ import {
   Award,
   Code,
   Rocket,
+  Sun,
+  GraduationCap,
+  Building2,
 } from "lucide-react";
 
 const timeline = [
   {
-    year: "2020",
-    title: "Started Coding Journey",
+    year: "July 2023",
+    title: "College Graduation",
     description:
-      "Discovered my passion for programming and began learning JavaScript and web development fundamentals.",
-    icon: Code,
+      "Graduated with a passion for web development. Ready to make my mark in the tech industry.",
+    icon: GraduationCap,
   },
   {
-    year: "2021",
-    title: "First Full-Stack Project",
+    year: "Jan 2023 - July 2023",
+    title: "First Internship",
     description:
-      "Built my first complete web application using React and Node.js, sparking my love for full-stack development.",
+      "Started as an intern at Info Origin Technologies during my final semester. Gained hands-on experience and impressed the team with my dedication and technical skills.",
     icon: Rocket,
   },
   {
-    year: "2022",
-    title: "Professional Experience",
+    year: "July 2023 - Dec 2023",
+    title: "Enterprise Backend Developer",
     description:
-      "Joined a startup as a junior developer, working on real-world projects and learning industry best practices.",
+      "Transitioned to the services team, working directly with SwissRe (major reinsurance company). Developed robust backend solutions handling critical business operations and large-scale data processing.",
+    icon: Building2,
+  },
+  {
+    year: "Jan 2024 - Nov 2025",
+    title: "Product Team Developer",
+    description:
+      "Worked on building an innovative low-code tool for website creation. Developed both frontend and backend solutions, contributing to a product used by internal team.",
     icon: Users,
   },
   {
-    year: "2023",
-    title: "Freelance Success",
+    year: "Dec 2025 - Present",
+    title: "Self-Directed Learning Phase",
     description:
-      "Started freelancing and helped multiple clients build their digital presence with custom web solutions.",
-    icon: Star,
-  },
-  {
-    year: "2024",
-    title: "Continuous Growth",
-    description:
-      "Focusing on modern technologies and building trust-based relationships with clients and collaborators.",
-    icon: Award,
+      "Made a strategic decision to focus on cutting-edge technologies. Currently mastering the next generation of web development tools and emerging technologies like Web3.",
+    icon: Sun,
   },
 ];
 
@@ -147,8 +150,7 @@ const AboutSection = () => {
             About Me
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            I'm passionate about creating digital solutions that make a real
-            difference. Here's my journey and what drives me forward.
+            Here's my journey and what drives me forward.
           </p>
         </motion.div>
 
@@ -179,12 +181,6 @@ const AboutSection = () => {
                   delivering exactly what I promise. Whether working with
                   clients or collaborating with teams, I bring reliability and
                   positive energy to every project.
-                </p>
-                <p>
-                  When I'm not coding, you'll find me exploring new
-                  technologies, contributing to open-source projects, or sharing
-                  knowledge with the developer community. I'm always excited to
-                  take on new challenges and learn from every project.
                 </p>
               </div>
             </div>
@@ -255,15 +251,15 @@ const AboutSection = () => {
                   return (
                     <motion.div
                       key={item.year}
-                      variants={timelineVariants}
-                      whileHover={{ x: 8 }}
+                      // variants={timelineVariants}
+                      // whileHover={{ x: 8 }}
                       className="relative flex items-start gap-6"
                     >
                       {/* Timeline Node */}
                       <div className="relative">
                         <motion.div
-                          whileHover={{ scale: 1.2, rotate: 360 }}
-                          transition={{ duration: 0.3 }}
+                          // whileHover={{ scale: 1.2, rotate: 360 }}
+                          // transition={{ duration: 0.3 }}
                           className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-primary-foreground text-sm font-semibold shadow-lg"
                         >
                           <Icon className="h-4 w-4" />
@@ -301,41 +297,6 @@ const AboutSection = () => {
               </div>
             </div>
           </motion.div>
-        </motion.div>
-
-        {/* Call to Action */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-center mt-16 md:mt-20"
-        >
-          <div className="bg-card/50 border border-border rounded-2xl p-6 md:p-8 backdrop-blur-sm">
-            <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-4">
-              Ready to Work Together?
-            </h3>
-            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
-              Let's discuss your project and see how I can help bring your
-              vision to life.
-            </p>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => {
-                const element = document.getElementById("contact");
-                if (element) {
-                  element.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start",
-                  });
-                }
-              }}
-              className="btn-hero"
-            >
-              Let's Connect
-            </motion.button>
-          </div>
         </motion.div>
       </div>
     </section>

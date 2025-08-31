@@ -1,14 +1,6 @@
-import {
-  Github,
-  Linkedin,
-  Mail,
-  ArrowUp,
-  Heart,
-  Code,
-  Zap,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowUp, Heart, Code } from "lucide-react";
 import { motion } from "framer-motion";
+import { SocialLinks } from "./SocialLinks";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -74,67 +66,33 @@ const Footer = () => {
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               onClick={scrollToTop}
-              className="btn-ghost group bg-card/50 border border-border hover:bg-card hover:shadow-lg transition-all duration-300 px-6 py-3 rounded-xl"
+              className="btn-ghost group bg-card/50 border border-border hover:bg-card hover:shadow-lg transition-all duration-300 px-6 py-3 rounded-xl flex items-center justify-between"
             >
               <ArrowUp className="h-5 w-5 mr-2 transition-transform duration-300 group-hover:-translate-y-1" />
-              Back to Top
+              <motion.span>Back to Top</motion.span>
             </motion.button>
           </motion.div>
 
           {/* Social Links */}
-          <motion.div
-            variants={itemVariants}
-            className="flex items-center space-x-6 md:space-x-8"
-          >
-            <motion.a
-              variants={socialVariants}
-              whileHover={{ scale: 1.2, y: -4, rotate: 5 }}
-              whileTap={{ scale: 0.9 }}
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-all duration-300 p-3 bg-card/50 border border-border rounded-xl hover:bg-card hover:shadow-md"
-              aria-label="GitHub Profile"
-            >
-              <Github className="h-6 w-6" />
-            </motion.a>
-            <motion.a
-              variants={socialVariants}
-              whileHover={{ scale: 1.2, y: -4, rotate: -5 }}
-              whileTap={{ scale: 0.9 }}
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-all duration-300 p-3 bg-card/50 border border-border rounded-xl hover:bg-card hover:shadow-md"
-              aria-label="LinkedIn Profile"
-            >
-              <Linkedin className="h-6 w-6" />
-            </motion.a>
-            <motion.a
-              variants={socialVariants}
-              whileHover={{ scale: 1.2, y: -4, rotate: 5 }}
-              whileTap={{ scale: 0.9 }}
-              href="mailto:dheeraj@example.com"
-              className="text-muted-foreground hover:text-primary transition-all duration-300 p-3 bg-card/50 border border-border rounded-xl hover:bg-card hover:shadow-md"
-              aria-label="Send Email"
-            >
-              <Mail className="h-6 w-6" />
-            </motion.a>
-          </motion.div>
-
+          <div className="flex flex-col justify-center items-center">
+            <p className="text-muted-foreground mb-2.5 text-base md:text-lg">
+              Let's connect
+            </p>
+            <SocialLinks />
+          </div>
           {/* Contact Email */}
-          <motion.div variants={itemVariants} className="text-center">
+          {/* <motion.div variants={itemVariants} className="text-center">
             <p className="text-muted-foreground mb-3 text-base md:text-lg">
               Ready to start a project?
             </p>
             <motion.a
               whileHover={{ scale: 1.05 }}
-              href="mailto:dheeraj@example.com"
+              href="mailto:dkmanwani2000@gmail.com"
               className="text-primary hover:text-primary/80 font-medium transition-colors duration-300 underline decoration-2 underline-offset-4 text-lg md:text-xl"
             >
-              dheeraj@example.com
+              dkmanwani2000@gmail.com
             </motion.a>
-          </motion.div>
+          </motion.div> */}
 
           {/* Quick Links */}
           <motion.div variants={itemVariants} className="text-center">
@@ -192,16 +150,16 @@ const Footer = () => {
             variants={itemVariants}
             className="text-center border-t border-border pt-8 w-full"
           >
-            <p className="text-muted-foreground text-sm md:text-base mb-2">
-              © {currentYear} Dheeraj Manwani. Built with{" "}
+            <p className="text-muted-foreground text-sm md:text-base mb-2 flex items-center justify-center gap-1">
+              <span>© {currentYear} Dheeraj Manwani. Built with </span>
               <motion.span
-                whileHover={{ scale: 1.2, rotate: 360 }}
                 className="inline-flex items-center gap-1 text-primary"
+                whileHover={{ scale: 1.2 }}
               >
                 <Heart className="h-4 w-4" />
                 passion
-              </motion.span>{" "}
-              and{" "}
+              </motion.span>
+              <span>and</span>
               <motion.span
                 whileHover={{ scale: 1.2 }}
                 className="inline-flex items-center gap-1 text-primary"
@@ -210,10 +168,6 @@ const Footer = () => {
                 React
               </motion.span>
               .
-            </p>
-            <p className="text-muted-foreground text-xs md:text-sm flex items-center justify-center gap-2">
-              <Zap className="h-3 w-3" />
-              Designed for trust, built for performance.
             </p>
           </motion.div>
         </motion.div>

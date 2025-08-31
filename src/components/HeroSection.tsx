@@ -1,24 +1,26 @@
 import { useEffect, useState } from "react";
-import {
-  ChevronDown,
-  Mail,
-  Github,
-  Linkedin,
-  Instagram,
-  Twitter,
-  Facebook,
-  ArrowRight,
-} from "lucide-react";
+import { Linkedin, Instagram, Twitter, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroPortrait from "@/assets/my-portrait.jpg";
+import heroPortraitMobile from "@/assets/my-portrait-short.jpg";
+
 import { motion } from "framer-motion";
-import { BorderTrail } from "./BorderTrail";
 import { TextShimmer } from "./TextShimmer";
 import { GlowEffect } from "./GlowEffect";
+import { SocialLinks } from "./SocialLinks";
 
 interface HeroSectionProps {
   onContactClick: () => void;
 }
+
+export const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: "easeOut" },
+  },
+};
 
 const HeroSection = ({ onContactClick }: HeroSectionProps) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -30,10 +32,21 @@ const HeroSection = ({ onContactClick }: HeroSectionProps) => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+      // Ensure the element is in the DOM and visible
+      if (element.offsetParent !== null) {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      } else {
+        // Fallback: scroll to element with a small delay to ensure rendering
+        setTimeout(() => {
+          element.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }, 100);
+      }
     }
   };
 
@@ -45,15 +58,6 @@ const HeroSection = ({ onContactClick }: HeroSectionProps) => {
         staggerChildren: 0.2,
         delayChildren: 0.1,
       },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
     },
   };
 
@@ -70,7 +74,7 @@ const HeroSection = ({ onContactClick }: HeroSectionProps) => {
   const floatingVariants = {
     hidden: { y: 0 },
     visible: {
-      y: [-8, 8, -8],
+      y: [-5, 5, -5],
       transition: {
         duration: 4,
         repeat: Infinity,
@@ -105,14 +109,14 @@ const HeroSection = ({ onContactClick }: HeroSectionProps) => {
         >
           {/* Text Content - Left Side */}
           <div className="flex-1 lg:pr-12 text-center lg:text-left order-2 lg:order-1">
-            <motion.div variants={itemVariants} className="mb-6">
+            <motion.div variants={itemVariants} className="mb-4">
               <motion.p
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="text-lg md:text-xl text-muted-foreground mb-3 font-medium"
               >
-                Hello, I'm
+                👋 Hello, I'm
               </motion.p>
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
@@ -130,16 +134,16 @@ const HeroSection = ({ onContactClick }: HeroSectionProps) => {
               </motion.h1>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="mb-8">
+            <motion.div variants={itemVariants} className="mb-4">
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
                 className="text-lg md:text-xl text-muted-foreground max-w-lg mx-auto lg:mx-0 leading-relaxed mb-6"
               >
-                A passionate full-stack developer with over 5 years of
-                experience, specializing in creating innovative digital
-                solutions and exceptional user experiences.
+                A full-stack developer with 2 years of experience building
+                reliable, clean, efficient solutions with a strong commitment to
+                transparency and collaboration.
               </motion.p>
 
               <motion.div
@@ -150,29 +154,29 @@ const HeroSection = ({ onContactClick }: HeroSectionProps) => {
               >
                 <Button
                   onClick={onContactClick}
-                  variant="ghost"
-                  className="group"
+                  variant="outline"
+                  className="hover:bg-background"
                   size="lg"
                 >
-                  <TextShimmer as={"span"} duration={1.5}>
+                  <TextShimmer as={"span"} duration={1.5} className="text-base">
                     Get In Touch
                   </TextShimmer>
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
                 </Button>
+                {/* <ShinyButton>Get In Touch</ShinyButton> */}
                 <Button
                   onClick={() => scrollToSection("projects")}
-                  variant="outline"
-                  className="btn-outline group"
+                  variant="ghost"
+                  className="hover:bg-transparent"
                   size="lg"
                 >
                   View Projects
-                  <ChevronDown className="ml-2 h-4 w-4 group-hover:translate-y-1 transition-transform duration-200" />
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-y-1 transition-transform duration-200" />
                 </Button>
               </motion.div>
             </motion.div>
 
             {/* Services Section */}
-            <motion.div variants={itemVariants} className="mb-8">
+            {/* <motion.div variants={itemVariants} className="mb-8">
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -200,50 +204,10 @@ const HeroSection = ({ onContactClick }: HeroSectionProps) => {
                 Explore my skills
                 <ChevronDown className="h-4 w-4 rotate-[-90deg] group-hover:translate-y-1 transition-transform duration-200" />
               </motion.button>
-            </motion.div>
+            </motion.div> */}
 
             {/* Social Media Icons */}
-            <motion.div
-              variants={itemVariants}
-              className="flex gap-4 justify-center lg:justify-start mt-8"
-            >
-              <motion.a
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                href="#"
-                className="w-12 h-12 bg-primary/10 dark:bg-primary/20 rounded-xl flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-200 shadow-lg hover:shadow-xl"
-                data-testid="social-facebook"
-              >
-                <Facebook className="w-5 h-5" />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                href="#"
-                className="w-12 h-12 bg-secondary/10 dark:bg-secondary/20 rounded-xl flex items-center justify-center text-secondary-600 hover:bg-secondary-600 hover:text-white transition-all duration-200 shadow-lg hover:shadow-xl"
-                data-testid="social-twitter"
-              >
-                <Twitter className="w-5 h-5" />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                href="#"
-                className="w-12 h-12 bg-accent/30 dark:bg-accent/40 rounded-xl flex items-center justify-center text-accent-700 hover:bg-accent-700 hover:text-white transition-all duration-200 shadow-lg hover:shadow-xl"
-                data-testid="social-instagram"
-              >
-                <Instagram className="w-5 h-5" />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                href="#"
-                className="w-12 h-12 bg-primary/10 dark:bg-primary/20 rounded-xl flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-200 shadow-lg hover:shadow-xl"
-                data-testid="social-linkedin"
-              >
-                <Linkedin className="w-5 h-5" />
-              </motion.a>
-            </motion.div>
+            <SocialLinks />
           </div>
 
           {/* Profile Image - Right Side */}
@@ -253,7 +217,7 @@ const HeroSection = ({ onContactClick }: HeroSectionProps) => {
           >
             <motion.div
               variants={floatingVariants}
-              className="relative max-w-48 md:max-w-60 mx-auto lg:max-w-md"
+              className="relative max-w-72 md:max-w-60 mx-auto lg:max-w-md"
             >
               <GlowEffect
                 colors={["#8F8DFF", "#3B47B8"]}
@@ -262,12 +226,19 @@ const HeroSection = ({ onContactClick }: HeroSectionProps) => {
                 className="z-[-1]"
                 duration={6}
               />
-              <motion.img
+              {/* <motion.img
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
                 src={heroPortrait}
                 alt="Professional headshot of Dheeraj Manwani"
-                className="w-full h-auto object-cover rounded-3xl shadow-2xl"
+                className=" hidden md:block w-full h-auto object-cover rounded-3xl shadow-2xl"
+              /> */}
+              <motion.img
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+                src={heroPortraitMobile}
+                alt="Professional headshot of Dheeraj Manwani"
+                className=" w-full h-auto object-cover rounded-3xl shadow-2xl"
               />
             </motion.div>
           </motion.div>

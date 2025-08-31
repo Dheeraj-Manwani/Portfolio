@@ -1,14 +1,20 @@
 import { useState, useEffect } from "react";
-import { Moon, Sun, Menu, X, ChevronDown } from "lucide-react";
+import { Moon, Sun, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import logo from "@/assets/folio_logo_no_bg.png";
 
 interface NavigationProps {
   isDark: boolean;
   toggleTheme: () => void;
+  isModalOpen?: boolean;
 }
 
-const Navigation = ({ isDark, toggleTheme }: NavigationProps) => {
+const Navigation = ({
+  isDark,
+  toggleTheme,
+  isModalOpen = false,
+}: NavigationProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -43,14 +49,50 @@ const Navigation = ({ isDark, toggleTheme }: NavigationProps) => {
   }, [navItems]);
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
+    // Close mobile menu first
     setIsMobileMenuOpen(false);
+
+    // Use setTimeout to ensure the mobile menu is closed before scrolling
+    setTimeout(() => {
+      const element = document.getElementById(sectionId);
+
+      if (element) {
+        // Ensure the element is in the DOM and visible
+        if (element.offsetParent !== null) {
+          element.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        } else {
+          // Fallback: scroll to element with a small delay to ensure rendering
+          setTimeout(() => {
+            element.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }, 100);
+        }
+      } else {
+        // Try alternative approach: scroll to position
+        const sectionPositions = {
+          home: 0,
+          skills: 800, // Approximate positions
+          projects: 1600,
+          about: 2400,
+          contact: 3200,
+        };
+
+        if (
+          sectionPositions[sectionId as keyof typeof sectionPositions] !==
+          undefined
+        ) {
+          window.scrollTo({
+            top: sectionPositions[sectionId as keyof typeof sectionPositions],
+            behavior: "smooth",
+          });
+        }
+      }
+    }, 100);
   };
 
   const navVariants = {
@@ -90,23 +132,23 @@ const Navigation = ({ isDark, toggleTheme }: NavigationProps) => {
       variants={navVariants}
       initial="hidden"
       animate="visible"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 ${
         isScrolled ? "nav-glass" : "bg-transparent"
-      }`}
+      } ${isModalOpen ? "backdrop-blur-md bg-background/80" : ""}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <motion.div variants={itemVariants} className="flex-shrink-0">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => scrollToSection("home")}
-              className="text-2xl font-bold text-gradient hover:scale-105 transition-transform duration-300"
-            >
-              Portfolio
-            </motion.button>
-          </motion.div>
+          {/* <motion.div variants={itemVariants} className="flex-shrink-0"> */}
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => scrollToSection("home")}
+            className="text-2xl font-bold text-gradient hover:scale-105 transition-transform duration-300 flex items-center justify-center"
+          >
+            <img src={logo} alt="logo" className="w-12 h-12 mt" />
+          </motion.button>
+          {/* </motion.div> */}
 
           {/* Desktop Navigation */}
           <motion.div variants={itemVariants} className="hidden md:block">
