@@ -1,9 +1,7 @@
 import linkedIn from "@/assets/linkedin.svg";
-import instagram from "@/assets/instagram.svg";
 import twitter from "@/assets/x.svg";
 import github from "@/assets/github_new.svg";
 import gmail from "@/assets/gmail.svg";
-import whatsapp from "@/assets/whatsapp.svg";
 import { motion } from "framer-motion";
 import { itemVariants } from "./HeroSection";
 
@@ -42,17 +40,6 @@ export const SocialLinks = () => {
         <motion.a
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          href="https://wa.me/9340291210?text=Hi Dheeraj!"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-12 h-12 bg-muted/50 dark:bg-muted/30 rounded-xl flex items-center justify-center text-muted-foreground  hover:text-white transition-all duration-300 border border-border/50 hover:border-primary/50"
-          data-testid="social-whatsapp"
-        >
-          <img src={whatsapp} alt="whatsapp" className="w-7 h-7" />
-        </motion.a>
-        <motion.a
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
           href="https://github.com/Dheeraj-Manwani"
           target="_blank"
           className="w-12 h-12 bg-muted/50 dark:bg-muted/30 rounded-xl flex items-center justify-center text-muted-foreground  hover:text-white transition-all duration-300 border border-border/50 hover:border-primary/50"
@@ -70,17 +57,6 @@ export const SocialLinks = () => {
           data-testid="social-twitter"
         >
           <img src={twitter} alt="Twitter" className="w-7 h-7" />
-        </motion.a>
-
-        <motion.a
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          href="https://www.instagram.com/dheeraj_explores/"
-          target="_blank"
-          className="w-12 h-12 bg-muted/50 dark:bg-muted/30 rounded-xl flex items-center justify-center text-muted-foreground  hover:text-white transition-all duration-300 border border-border/50 hover:border-primary/50"
-          data-testid="social-instagram"
-        >
-          <img src={instagram} alt="Instagram" className="w-6 h-6" />
         </motion.a>
       </motion.div>
       {/* 
