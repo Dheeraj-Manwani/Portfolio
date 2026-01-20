@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Linkedin, Instagram, Twitter, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroPortrait from "@/assets/my-portrait.jpg";
 import heroPortraitMobile from "@/assets/my-portrait-short.jpg";
@@ -219,13 +219,13 @@ const HeroSection = ({ onContactClick }: HeroSectionProps) => {
               variants={floatingVariants}
               className="relative max-w-72 md:max-w-60 mx-auto lg:max-w-md"
             >
-              <GlowEffect
+              {/* <GlowEffect
                 colors={["#8F8DFF", "#3B47B8"]}
                 mode="rotate"
                 blur="medium"
                 className="z-[-1]"
                 duration={6}
-              />
+              /> */}
               {/* <motion.img
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}

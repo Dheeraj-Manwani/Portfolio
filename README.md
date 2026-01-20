@@ -1,73 +1,102 @@
-# Welcome to your Lovable project
+# 👋 Hi, I'm Dheeraj Manwani
 
-## Project info
+**Full-Stack Developer** | 2+ Years of Experience
 
-**URL**: https://lovable.dev/projects/7e43815f-c484-486b-b380-922f205b609e
+I build web applications that are reliable, maintainable, and practical. I enjoy working across the stack — from backend APIs to interactive frontends — and I focus on writing clean, readable, and scalable code.
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## 🚀 About Me
 
-**Use Lovable**
+I started programming in college out of curiosity and gradually moved into professional software development through internships and real-world projects.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/7e43815f-c484-486b-b380-922f205b609e) and start prompting.
+Over the past two years, I’ve worked in both enterprise and product environments, collaborating with cross-functional teams and learning how large-scale systems are designed, built, and maintained.
 
-Changes made via Lovable will be committed automatically to this repo.
+Currently, I’m deepening my knowledge in modern web development and applied AI while building personal projects that reflect production-grade practices.
 
-**Use your preferred IDE**
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 💼 Experience
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### **Software Engineer – Product Team**  
+**Jan 2024 – Nov 2025 | Info Origin Technologies**
 
-Follow these steps:
+Worked on a low-code/no-code automation platform that helps users generate automated test cases from plain text.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+Key contributions:
+- Built and maintained backend services for automation workflows.
+- Worked on frontend features for visual workflow configuration.
+- Helped improve system reliability and performance.
+- Collaborated closely with QA and product teams.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+---
 
-# Step 3: Install the necessary dependencies.
-npm i
+### **Backend Developer – Enterprise Project (Swiss Re)**  
+**July 2023 – Dec 2023 | Info Origin Technologies**
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+Worked with Swiss Re’s internal POM (Policy Manager) platform used by underwriters and actuaries.
 
-**Edit a file directly in GitHub**
+Key contributions:
+- Developed and maintained Spring Boot microservices.
+- Built REST APIs for policy configuration and calculations.
+- Worked with PostgreSQL for data persistence.
+- Handled real business logic used in production systems.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+### **Intern – Software Development**  
+**Jan 2023 – July 2023 | Info Origin Technologies**
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- Worked on backend services using Java and Spring Boot.
+- Learned professional coding practices, Git workflows, and enterprise development.
+- Converted internship into a full-time role based on performance.
 
-## What technologies are used for this project?
+---
 
-This project is built with:
+## 🛠️ Technologies & Tools
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### **Languages**
+- Java  
+- TypeScript  
+- JavaScript  
 
-## How can I deploy this project?
+### **Frontend**
+- React  
+- Next.js  
+- Tailwind CSS  
+- React Router  
+- Shadcn/ui  
 
-Simply open [Lovable](https://lovable.dev/projects/7e43815f-c484-486b-b380-922f205b609e) and click on Share -> Publish.
+### **Backend**
+- Node.js  
+- Spring Boot  
 
-## Can I connect a custom domain to my Lovable project?
+### **Databases**
+- PostgreSQL  
+- MySQL  
+- MongoDB  
+- Redis  
 
-Yes, you can!
+### **APIs & State**
+- REST APIs  
+- GraphQL  
+- Redux  
+- Zustand  
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### **DevOps & Tools**
+- Docker  
+- AWS  
+- Git & GitHub  
+- VS Code  
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+---
+
+## 📱 Connect With Me
+
+- **LinkedIn:** https://www.linkedin.com/in/dheeraj-manwani-63192a215/  
+- **GitHub:** https://github.com/Dheeraj-Manwani  
+- **Email:** dkmanwani2000@gmail.com  
+
+---
+
+Thanks for visiting my portfolio!  

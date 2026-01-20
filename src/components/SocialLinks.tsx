@@ -75,7 +75,7 @@ export const SocialLinks = () => {
         <motion.a
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          href="https://www.instagram.com/_dheeraj_manwani_/"
+          href="https://www.instagram.com/dheeraj_explores/"
           target="_blank"
           className="w-12 h-12 bg-muted/50 dark:bg-muted/30 rounded-xl flex items-center justify-center text-muted-foreground  hover:text-white transition-all duration-300 border border-border/50 hover:border-primary/50"
           data-testid="social-instagram"
