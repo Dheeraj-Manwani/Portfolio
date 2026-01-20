@@ -152,17 +152,39 @@ const HeroSection = ({ onContactClick }: HeroSectionProps) => {
                 transition={{ duration: 0.6, delay: 0.8 }}
                 className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
               >
-                <Button
+                <motion.button
                   onClick={onContactClick}
-                  variant="outline"
-                  className="hover:bg-background"
-                  size="lg"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="group relative px-6 py-2.5 rounded-xl font-semibold text-base overflow-hidden
+                    bg-gradient-to-r from-primary via-primary/90 to-primary/80
+                    dark:from-primary dark:via-primary/90 dark:to-primary/80
+                    text-primary-foreground dark:text-primary-foreground
+                    shadow-lg shadow-primary/20 dark:shadow-primary/30
+                    hover:shadow-xl hover:shadow-primary/30 dark:hover:shadow-primary/40
+                    transition-all duration-300 ease-out
+                    border border-primary/20 dark:border-primary/30"
                 >
-                  <TextShimmer as={"span"} duration={1.5} className="text-base">
+                  {/* Animated shimmer sweep effect */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 dark:via-white/20 to-transparent"
+                    animate={{
+                      x: ["-100%", "200%"],
+                    }}
+                    transition={{
+                      repeat: Infinity,
+                      duration: 2.5,
+                      ease: "linear",
+                    }}
+                  />
+                  {/* Glow effect on hover */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-primary/40 via-primary/60 to-primary/40 blur-xl -z-10" />
+
+                  {/* Text with enhanced visibility */}
+                  <span className="relative z-10 flex items-center justify-center gap-2 font-semibold text-base">
                     Get In Touch
-                  </TextShimmer>
-                </Button>
-                {/* <ShinyButton>Get In Touch</ShinyButton> */}
+                  </span>
+                </motion.button>
                 <Button
                   onClick={() => scrollToSection("projects")}
                   variant="ghost"

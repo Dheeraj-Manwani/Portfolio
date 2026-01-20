@@ -96,6 +96,27 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
         const end = Date.now() + 3 * 1000;
         const colors = ["#8F8DFF", "#3B47B8"];
 
+        // Ensure confetti canvas has high z-index - continuously update during animation
+        const zIndexInterval = setInterval(() => {
+          const canvases = document.querySelectorAll("canvas");
+          canvases.forEach((canvas) => {
+            const canvasElement = canvas as HTMLElement;
+            const computedStyle = window.getComputedStyle(canvas);
+            if (
+              computedStyle.position === "fixed" ||
+              computedStyle.position === "absolute"
+            ) {
+              canvasElement.style.zIndex = "99999";
+              canvasElement.style.pointerEvents = "none";
+            }
+          });
+        }, 50);
+
+        // Clear interval after confetti ends
+        setTimeout(() => {
+          clearInterval(zIndexInterval);
+        }, 3500);
+
         const frame = () => {
           if (Date.now() > end) return;
 

@@ -290,3 +290,14 @@
     transform: scale(1);
   }
 }
+
+/* Confetti Canvas - Ensure it appears above modals */
+canvas[id^="confetti"] {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: none !important;
+  z-index: 99999 !important;
+}
