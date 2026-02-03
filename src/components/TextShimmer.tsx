@@ -18,13 +18,27 @@ function TextShimmerComponent({
   duration = 2,
   spread = 2,
 }: TextShimmerProps) {
-  const MotionComponent = motion.create(
-    Component as keyof JSX.IntrinsicElements
-  );
-
   const dynamicSpread = useMemo(() => {
     return children.length * spread;
   }, [children, spread]);
+
+  // Map component types to motion components
+  const getMotionComponent = () => {
+    const componentMap: Record<string, React.ElementType> = {
+      span: motion.span,
+      p: motion.p,
+      div: motion.div,
+      h1: motion.h1,
+      h2: motion.h2,
+      h3: motion.h3,
+      h4: motion.h4,
+      h5: motion.h5,
+      h6: motion.h6,
+    };
+    return componentMap[Component as string] || motion.span;
+  };
+
+  const MotionComponent = getMotionComponent();
 
   return (
     <MotionComponent

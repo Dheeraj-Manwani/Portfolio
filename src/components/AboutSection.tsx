@@ -46,7 +46,7 @@ const timeline = [
     year: "Dec 2025 - Present",
     title: "Self-Directed Learning Phase",
     description:
-      "Made a strategic decision to focus on cutting-edge technologies. Currently mastering the next generation of web development tools and emerging technologies like Web3.",
+      "Made a strategic decision to focus on cutting-edge technologies. Currently mastering the next generation of web development tools and emerging technologies like AI.",
     icon: Sun,
   },
 ];

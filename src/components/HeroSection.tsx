@@ -258,7 +258,7 @@ const HeroSection = ({ onContactClick }: HeroSectionProps) => {
               <motion.img
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
-                src={heroPortraitMobile}
+                src={`${import.meta.env.VITE_CLOUDFRONT_URL}/static_assets/personal/potrait-2.jpeg`}
                 alt="Professional headshot of Dheeraj Manwani"
                 className=" w-full h-auto object-cover rounded-3xl shadow-2xl"
               />

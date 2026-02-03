@@ -1,5 +1,10 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Github, Code, Clock, Zap } from "lucide-react";
+import { TextShimmer } from "./TextShimmer";
+import { ProjectImageCarousel } from "./ProjectImageCarousel";
+import { ProjectModal } from "./ProjectModal";
+import { RotatingTag } from "./RotatingTag";
+import { useState } from "react";
 
 const projects = [
   {
@@ -8,84 +13,66 @@ const projects = [
       "A responsive social media platform with trending section, searches and many more functionalities.",
     video:
       "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-    poster: import.meta.env.VITE_CLOUDFRONT_URL + "/full_logo.png",
-    tags: ["Next.js", "Tanstack Query", "Shadcn UI", "Prisma"],
+    poster: import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/pulse/pulse-full-size-logo.png",
+    images: [
+      import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/pulse/pulse-full-size-logo.png",
+      import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/pulse/pulse-1.png",
+      import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/pulse/pulse-2.png",
+      import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/pulse/pulse-3.png",
+      import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/pulse/pulse-4.png",
+    ],
+    tags: ["Next.js", "Prisma", "PostgreSQL", "TailwindCSS"],
     githubUrl: "https://github.com/Dheeraj-Manwani/pulse-social-media",
-    liveUrl: "https://pulse-social-media-pi.vercel.app/",
-    color: "accent",
+    liveUrl: "https://pulse.bydm.site/",
+    color: "primary",
     status: "completed",
   },
   {
     title: "Better Gondia Mitra",
     description:
       "A complaint management web application which provides an end to end solution for complaint management for both users and admins.",
-    video: import.meta.env.VITE_CLOUDFRONT_URL + "/better-gondia.mp4",
-    poster: import.meta.env.VITE_CLOUDFRONT_URL + "/better-gondia.png",
+    video: import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/gms/bgm-logo.png",
+    poster: import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/gms/bgm-logo.png",
+    images: [
+      import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/gms/bgm-logo.png",
+      import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/gms/gms-new-4.png",
+      import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/gms/gms-0.5.png",
+      import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/gms/gms-new-1.png",
+      import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/gms/gms-new-2.png",
+    ],
     tags: ["Next.js", "Prisma", "PostgreSQL", "TailwindCSS"],
     githubUrl: "https://github.com/Dheeraj-Manwani/better-gondia-bot",
     liveUrl: "https://better-gondia-bot.vercel.app/",
     color: "primary",
     status: "completed",
+    rotatingText: [
+      { text: "Deployed to Prod", icon: <Zap className="w-3 h-3" /> },
+      { text: "700+ complaints in first month", icon: <Zap className="w-3 h-3" /> },
+      { text: "Actively used by users and admins", icon: <Zap className="w-3 h-3" /> },
+    ],
   },
   {
-    title: "Task Management App",
+    title: "Code Arena - Contest Platform",
     description:
-      "A collaborative project management tool with real-time updates, team collaboration, and advanced filtering.",
-    video:
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-    poster:
-      "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=450",
-    tags: ["Next.js", "TypeScript", "PostgreSQL", "Socket.io"],
-    githubUrl: "#",
+      "A competitive coding platform for students to participate in coding contests and improve their skills.",
+    video: import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/code-arena/code-arena-logo.png",
+    poster: import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/code-arena/code-arena-logo.png",
+    images: [
+      import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/code-arena/logo.png",
+      import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/code-arena/code-arena-editor.png",
+      import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/code-arena/code-arena-user-main.png",
+      import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/code-arena/code-arena-admin-main.png",
+      import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/code-arena/code-arena-admin-edit-contest.png",
+    ],
+    tags: ["React", "Node.js", "Redis", "WebSocket",],
+    githubUrl: "https://github.com/Dheeraj-Manwani/code-arena",
     liveUrl: "#",
     color: "secondary",
     status: "development",
     progress: 75,
+    workInProgress: "Currently working on judge worker and realtime leaderboard.",
   },
 
-  {
-    title: "Analytics Dashboard",
-    description:
-      "A comprehensive business analytics platform with real-time data visualization and customizable reporting features.",
-    video:
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-    poster:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=450",
-    tags: ["Vue.js", "D3.js", "Express", "Redis"],
-    githubUrl: "#",
-    liveUrl: "#",
-    color: "primary",
-    status: "completed",
-  },
-  {
-    title: "Social Media Platform",
-    description:
-      "A modern social networking platform with user profiles, real-time messaging, and content sharing capabilities.",
-    video:
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
-    poster:
-      "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=450",
-    tags: ["React Native", "Firebase", "GraphQL", "AWS"],
-    githubUrl: "#",
-    liveUrl: "#",
-    color: "secondary",
-    status: "development",
-    progress: 60,
-  },
-  {
-    title: "Learning Management System",
-    description:
-      "An educational platform with course management, progress tracking, and interactive learning modules for students and instructors.",
-    video:
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
-    poster:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=450",
-    tags: ["Next.js", "Prisma", "MySQL", "Stripe"],
-    githubUrl: "#",
-    liveUrl: "#",
-    color: "accent",
-    status: "completed",
-  },
 ];
 
 const containerVariants = {
@@ -121,7 +108,22 @@ const headerVariants = {
   },
 };
 
+
 export function NewProjectsSection() {
+  const [selectedProject, setSelectedProject] = useState<
+    (typeof projects)[number] | null
+  >(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleProjectClick = (project: (typeof projects)[number]) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
+  const handleButtonClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+  };
+
   return (
     <section
       id="projects"
@@ -166,7 +168,8 @@ export function NewProjectsSection() {
                 transition: { duration: 0.3, ease: "easeOut" },
               }}
               whileTap={{ scale: 0.98 }}
-              className="bg-card border border-border rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden relative group"
+              onClick={() => handleProjectClick(project)}
+              className="bg-card border border-border rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden relative group cursor-pointer"
               data-testid={`project-${index}`}
             >
               {/* Status Badge */}
@@ -176,67 +179,29 @@ export function NewProjectsSection() {
                   animate={{ scale: 1, rotate: 0 }}
                   transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
                   className="absolute top-3 right-3 z-20"
+                  onClick={handleButtonClick}
                 >
-                  <div className="bg-warning/90 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-xs font-semibold flex items-center space-x-1.5 shadow-lg">
-                    <Clock className="w-3 h-3" />
-                    <span>In Dev</span>
+                  <div className="bg-slate-900/95 dark:bg-slate-800/95 backdrop-blur-sm px-3 py-1.5 rounded-full text-sm font-semibold flex items-center space-x-1.5 shadow-lg border border-slate-700/50">
+                    <Clock className="w-3 h-3 text-slate-300" />
+                    <TextShimmer
+                      as="span"
+                      className="[--base-color:#64748b] [--base-gradient-color:#ffffff] dark:[--base-color:#64748b] dark:[--base-gradient-color:#ffffff]"
+                      duration={2}
+                      spread={2}
+                    >
+                      In Development
+                    </TextShimmer>
                   </div>
                 </motion.div>
               )}
 
-              <div className="relative overflow-hidden">
-                <img
-                  src={project.poster}
-                  alt={project.title}
-                  className="w-full h-40 md:h-48 object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                />
-                {/* Video Preview */}
-                {/* <video
-                  src={project.video}
-                  poster={project.poster}
-                  className="w-full h-40 md:h-48 object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                  muted
-                  loop
-                  autoPlay
-                  playsInline
-                  onMouseEnter={(e) => e.currentTarget.play()}
-                  onMouseLeave={(e) => e.currentTarget.pause()}
-                />
-
-               
-                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    whileHover={{ scale: 1.1 }}
-                    className="bg-white/20 backdrop-blur-sm rounded-full p-3"
-                  >
-                    <Zap className="w-5 h-5 text-white" />
-                  </motion.div>
-                </div> */}
-
-                {/* Development Progress Bar */}
-                {project.status === "development" && project.progress && (
-                  <div className="absolute bottom-0 left-0 right-0 bg-black/50 backdrop-blur-sm p-3">
-                    <div className="flex items-center justify-between text-white text-xs mb-2">
-                      <span>Progress</span>
-                      <span>{project.progress}%</span>
-                    </div>
-                    <div className="w-full bg-white/20 rounded-full h-2">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${project.progress}%` }}
-                        viewport={{ once: true }}
-                        transition={{
-                          duration: 1.5,
-                          delay: 0.8,
-                          ease: "easeOut",
-                        }}
-                        className="bg-warning h-2 rounded-full"
-                      />
-                    </div>
-                  </div>
-                )}
-              </div>
+              <ProjectImageCarousel
+                title={project.title}
+                poster={project.poster}
+                images={
+                  (project as typeof project & { images?: string[] }).images
+                }
+              />
 
               <div className="p-4 md:p-6">
                 <div className="flex items-start justify-between mb-3">
@@ -257,6 +222,22 @@ export function NewProjectsSection() {
                   )}
                 </div>
 
+                {/* Rotating Text below title */}
+                {(project as typeof project & { rotatingText?: Array<{ text: string; icon?: React.ReactNode }> }).rotatingText && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2, duration: 0.4 }}
+                    className="mb-4"
+                  >
+                    <RotatingTag
+                      items={(project as typeof project & { rotatingText?: Array<{ text: string; icon?: React.ReactNode }> }).rotatingText || []}
+                      color={project.color as "primary" | "secondary" | "accent"}
+                    />
+                  </motion.div>
+                )}
+
                 <p className="text-muted-foreground mb-4 text-sm md:text-base leading-relaxed line-clamp-4">
                   {project.description}
                 </p>
@@ -269,20 +250,19 @@ export function NewProjectsSection() {
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ delay: 0.1 * tagIndex, duration: 0.3 }}
-                      className={`px-2.5 py-1 text-xs rounded-md font-medium ${
-                        project.color === "primary"
-                          ? "bg-primary/10 text-primary"
-                          : project.color === "secondary"
+                      className={`px-2.5 py-1 text-xs rounded-md font-medium ${project.color === "primary"
+                        ? "bg-primary/10 text-primary"
+                        : project.color === "secondary"
                           ? "bg-secondary/20 text-secondary-700"
                           : "bg-accent/40 text-accent-700"
-                      }`}
+                        }`}
                     >
                       {tag}
                     </motion.span>
                   ))}
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-3">
+                <div className="flex flex-col sm:flex-row gap-3" onClick={handleButtonClick}>
                   <a
                     href={project.githubUrl}
                     className="flex-1 text-center border border-primary text-primary hover:bg-primary hover:text-primary-foreground px-4 py-2.5 rounded-lg transition-all duration-200 text-sm font-medium flex items-center justify-center space-x-2 hover:shadow-md active:scale-95"
@@ -321,6 +301,30 @@ export function NewProjectsSection() {
           ))}
         </motion.div>
       </div>
+
+      {/* Project Modal */}
+      {selectedProject && (
+        <ProjectModal
+          project={{
+            title: selectedProject.title,
+            description: selectedProject.description,
+            poster: selectedProject.poster,
+            images: (selectedProject as typeof selectedProject & {
+              images?: string[];
+            }).images,
+            tags: selectedProject.tags,
+            githubUrl: selectedProject.githubUrl,
+            liveUrl: selectedProject.liveUrl,
+            color: selectedProject.color as "primary" | "secondary" | "accent",
+            status: selectedProject.status as "completed" | "development",
+            workInProgress: (selectedProject as typeof selectedProject & {
+              workInProgress?: string;
+            }).workInProgress,
+          }}
+          open={isModalOpen}
+          onOpenChange={setIsModalOpen}
+        />
+      )}
     </section>
   );
 }
