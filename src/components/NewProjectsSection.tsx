@@ -8,31 +8,15 @@ import { useState } from "react";
 
 const projects = [
   {
-    title: "Pulse - Feel the rhythm",
-    description:
-      "A responsive social media platform with trending section, searches and many more functionalities.",
-    video:
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-    poster: import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/pulse/pulse-full-size-logo.png",
-    images: [
-      import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/pulse/pulse-full-size-logo.png",
-      import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/pulse/pulse-1.png",
-      import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/pulse/pulse-2.png",
-      import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/pulse/pulse-3.png",
-      import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/pulse/pulse-4.png",
-    ],
-    tags: ["Next.js", "Prisma", "PostgreSQL", "TailwindCSS"],
-    githubUrl: "https://github.com/Dheeraj-Manwani/pulse-social-media",
-    liveUrl: "https://pulse.bydm.site/",
-    color: "primary",
-    status: "completed",
-  },
-  {
     title: "Better Gondia Mitra",
     description:
-      "A complaint management web application which provides an end to end solution for complaint management for both users and admins.",
-    video: import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/gms/bgm-logo.png",
-    poster: import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/gms/bgm-logo.png",
+      "A production civic-tech grievance platform enabling citizens to submit complaints via Web + WhatsApp, with role-based dashboards actively used by government stakeholders.",
+    video:
+      import.meta.env.VITE_CLOUDFRONT_URL +
+      "/static_assets/gms/gms-demo.mp4",
+    poster:
+      import.meta.env.VITE_CLOUDFRONT_URL +
+      "/static_assets/gms/bgm-logo.png",
     images: [
       import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/gms/bgm-logo.png",
       import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/gms/gms-new-4.png",
@@ -40,40 +24,128 @@ const projects = [
       import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/gms/gms-new-1.png",
       import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/gms/gms-new-2.png",
     ],
-    tags: ["Next.js", "Prisma", "PostgreSQL", "TailwindCSS"],
-    githubUrl: "https://github.com/Dheeraj-Manwani/better-gondia-bot",
-    liveUrl: "https://better-gondia-bot.vercel.app/",
-    color: "primary",
+
+    tags: ["Next.js", "Prisma", "PostgreSQL", "WhatsApp Webhook", "RBAC"],
+    githubUrl: "https://github.com/Dheeraj-Manwani/gms-better-gondia",
+    liveUrl: "https://gms.bydm.site/",
+
     status: "completed",
+    badge: "Production System",
+    color: "primary",
+
     rotatingText: [
-      { text: "Deployed to Prod", icon: <Zap className="w-3 h-3" /> },
-      { text: "700+ complaints in first month", icon: <Zap className="w-3 h-3" /> },
-      { text: "Actively used by users and admins", icon: <Zap className="w-3 h-3" /> },
+      { text: "Deployed & actively used in Gondia", icon: <Zap className="w-3 h-3" /> },
+      { text: "700+ complaints submitted in month 1", icon: <Zap className="w-3 h-3" /> },
+      { text: "Used by Collector + department teams", icon: <Zap className="w-3 h-3" /> },
     ],
-  },
-  {
-    title: "Code Arena - Contest Platform",
-    description:
-      "A competitive coding platform for students to participate in coding contests and improve their skills.",
-    video: import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/code-arena/code-arena-logo.png",
-    poster: import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/code-arena/code-arena-logo.png",
-    images: [
-      import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/code-arena/logo.png",
-      import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/code-arena/code-arena-editor.png",
-      import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/code-arena/code-arena-user-main.png",
-      import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/code-arena/code-arena-admin-main.png",
-      import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/code-arena/code-arena-admin-edit-contest.png",
+
+    highlights: [
+      "Complaint submission via web + WhatsApp automation pipeline",
+      "Role-based dashboards for admins, departments, and stakeholders",
+      "Media uploads, workflow tracking, and public complaint support feed",
     ],
-    tags: ["React", "Node.js", "Redis", "WebSocket",],
-    githubUrl: "https://github.com/Dheeraj-Manwani/code-arena",
-    liveUrl: "#",
-    color: "secondary",
-    status: "development",
-    progress: 75,
-    workInProgress: "Currently working on judge worker and realtime leaderboard.",
+
+    complexity:
+      "End-to-end civic workflow system with WhatsApp integration, RBAC, and production deployment.",
   },
 
+  {
+    title: "Pulse — Feel the Rhythm",
+    description:
+      "A modern social media platform featuring realtime chat, trending feeds, media sharing, and optimistic UI updates — built with production-grade UX polish.",
+    video:
+      import.meta.env.VITE_CLOUDFRONT_URL +
+      "/static_assets/pulse/pulse-demo.mp4",
+    poster:
+      import.meta.env.VITE_CLOUDFRONT_URL +
+      "/static_assets/pulse/pulse-full-size-logo.png",
+
+    images: [
+      import.meta.env.VITE_CLOUDFRONT_URL +
+      "/static_assets/pulse/pulse-full-size-logo.png",
+      import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/pulse/pulse-1.png",
+      import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/pulse/pulse-2.png",
+      import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/pulse/pulse-3.png",
+      import.meta.env.VITE_CLOUDFRONT_URL + "/static_assets/pulse/pulse-4.png",
+    ],
+
+    tags: ["Next.js", "Prisma", "PostgreSQL", "Realtime Chat", "Optimistic UI"],
+    githubUrl: "https://github.com/Dheeraj-Manwani/pulse-social-media",
+    liveUrl: "https://pulse.bydm.site/",
+
+    status: "completed",
+    badge: "Polished Product App",
+    color: "primary",
+
+    rotatingText: [
+      { text: "Realtime chat + media attachments", icon: <Zap className="w-3 h-3" /> },
+      { text: "Optimistic UI for instant interactions", icon: <Zap className="w-3 h-3" /> },
+      { text: "Trending feed + full search discovery", icon: <Zap className="w-3 h-3" /> },
+    ],
+
+    highlights: [
+      "Realtime 1:1 messaging powered by streaming service",
+      "Trending + discovery feed with performant UI updates",
+      "Media uploads via UploadThing with smooth UX polish",
+    ],
+
+    complexity:
+      "Realtime social platform with chat infrastructure, optimistic state handling, and scalable feed features.",
+  },
+
+  {
+    title: "Code Arena — Contest Platform",
+    description:
+      "A Codeforces-style competitive coding platform featuring realtime leaderboards, Redis-backed rankings, async job queues, and a judge-worker execution pipeline.",
+    video:
+      import.meta.env.VITE_CLOUDFRONT_URL +
+      "/static_assets/code-arena/code-arena-demo.mp4",
+    poster:
+      import.meta.env.VITE_CLOUDFRONT_URL +
+      "/static_assets/code-arena/code-arena-logo.png",
+
+    images: [
+      import.meta.env.VITE_CLOUDFRONT_URL +
+      "/static_assets/code-arena/logo.png",
+      import.meta.env.VITE_CLOUDFRONT_URL +
+      "/static_assets/code-arena/code-arena-editor.png",
+      import.meta.env.VITE_CLOUDFRONT_URL +
+      "/static_assets/code-arena/code-arena-user-main.png",
+      import.meta.env.VITE_CLOUDFRONT_URL +
+      "/static_assets/code-arena/code-arena-admin-main.png",
+      import.meta.env.VITE_CLOUDFRONT_URL +
+      "/static_assets/code-arena/code-arena-admin-edit-contest.png",
+    ],
+
+    tags: ["React", "Node.js", "Redis", "WebSockets", "Worker Queue"],
+    githubUrl: "https://github.com/Dheeraj-Manwani/code-arena",
+    liveUrl: "#",
+
+    status: "development",
+    badge: "System Design Project",
+    color: "secondary",
+
+    progress: 75,
+    workInProgress:
+      "Currently building judge-worker execution + realtime leaderboard pipeline.",
+
+    rotatingText: [
+      { text: "Realtime leaderboard via Redis Sorted Sets", icon: <Zap className="w-3 h-3" /> },
+      { text: "Async judge-worker evaluation system", icon: <Zap className="w-3 h-3" /> },
+      { text: "Admin platform completed", icon: <Zap className="w-3 h-3" /> },
+    ],
+
+    highlights: [
+      "Contest + problem management dashboards for admins",
+      "Realtime leaderboard updates over WebSockets",
+      "Job queue + worker-based code execution pipeline",
+    ],
+
+    complexity:
+      "Distributed contest system with Redis ranking, websocket broadcasting, and async evaluation workers.",
+  },
 ];
+
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -320,6 +392,15 @@ export function NewProjectsSection() {
             workInProgress: (selectedProject as typeof selectedProject & {
               workInProgress?: string;
             }).workInProgress,
+            rotatingText: (selectedProject as typeof selectedProject & {
+              rotatingText?: Array<{ text: string; icon?: React.ReactNode }>;
+            }).rotatingText,
+            highlights: (selectedProject as typeof selectedProject & {
+              highlights?: string[];
+            }).highlights,
+            complexity: (selectedProject as typeof selectedProject & {
+              complexity?: string;
+            }).complexity,
           }}
           open={isModalOpen}
           onOpenChange={setIsModalOpen}

@@ -1,6 +1,6 @@
 # 👋 Hi, I'm Dheeraj Manwani
 
-**Full-Stack Developer** | 2+ Years of Experience
+**Full-Stack Developer** | 2.5+ Years of Experience
 
 I build web applications that are reliable, maintainable, and practical. I enjoy working across the stack — from backend APIs to interactive frontends — and I focus on writing clean, readable, and scalable code.
 
@@ -18,12 +18,14 @@ Currently, I’m deepening my knowledge in modern web development and applied AI
 
 ## 💼 Experience
 
-### **Software Engineer – Product Team**  
+### **Software Engineer – Product Team**
+
 **Jan 2024 – Nov 2025 | Info Origin Technologies**
 
 Worked on a low-code/no-code automation platform that helps users generate automated test cases from plain text.
 
 Key contributions:
+
 - Built and maintained backend services for automation workflows.
 - Worked on frontend features for visual workflow configuration.
 - Helped improve system reliability and performance.
@@ -31,12 +33,14 @@ Key contributions:
 
 ---
 
-### **Backend Developer – Enterprise Project (Swiss Re)**  
+### **Backend Developer – Enterprise Project (Swiss Re)**
+
 **July 2023 – Dec 2023 | Info Origin Technologies**
 
 Worked with Swiss Re’s internal POM (Policy Manager) platform used by underwriters and actuaries.
 
 Key contributions:
+
 - Developed and maintained Spring Boot microservices.
 - Built REST APIs for policy configuration and calculations.
 - Worked with PostgreSQL for data persistence.
@@ -44,7 +48,8 @@ Key contributions:
 
 ---
 
-### **Intern – Software Development**  
+### **Intern – Software Development**
+
 **Jan 2023 – July 2023 | Info Origin Technologies**
 
 - Worked on backend services using Java and Spring Boot.
@@ -56,47 +61,53 @@ Key contributions:
 ## 🛠️ Technologies & Tools
 
 ### **Languages**
-- Java  
-- TypeScript  
-- JavaScript  
+
+- Java
+- TypeScript
+- JavaScript
 
 ### **Frontend**
-- React  
-- Next.js  
-- Tailwind CSS  
-- React Router  
-- Shadcn/ui  
+
+- React
+- Next.js
+- Tailwind CSS
+- React Router
+- Shadcn/ui
 
 ### **Backend**
-- Node.js  
-- Spring Boot  
+
+- Node.js
+- Spring Boot
 
 ### **Databases**
-- PostgreSQL  
-- MySQL  
-- MongoDB  
-- Redis  
+
+- PostgreSQL
+- MySQL
+- MongoDB
+- Redis
 
 ### **APIs & State**
-- REST APIs  
-- GraphQL  
-- Redux  
-- Zustand  
+
+- REST APIs
+- GraphQL
+- Redux
+- Zustand
 
 ### **DevOps & Tools**
-- Docker  
-- AWS  
-- Git & GitHub  
-- VS Code  
+
+- Docker
+- AWS
+- Git & GitHub
+- VS Code
 
 ---
 
 ## 📱 Connect With Me
 
-- **LinkedIn:** https://www.linkedin.com/in/dheeraj-manwani-63192a215/  
-- **GitHub:** https://github.com/Dheeraj-Manwani  
-- **Email:** dkmanwani2000@gmail.com  
+- **LinkedIn:** https://www.linkedin.com/in/dheeraj-manwani-63192a215/
+- **GitHub:** https://github.com/Dheeraj-Manwani
+- **Email:** dkmanwani2000@gmail.com
 
 ---
 
-Thanks for visiting my portfolio!  
+Thanks for visiting my portfolio!
