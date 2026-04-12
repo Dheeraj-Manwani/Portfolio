@@ -148,7 +148,7 @@ const projects = [
   {
     title: "Instructis — Coaching Platform",
     description:
-      "A production-grade coaching platform for JEE & NEET institutes, combining a public marketing site with a full role-based system for students, faculty, and admins — covering tests, assignments, attendance, and AI-powered rank insights.",
+      "A production-grade coaching platform for JEE & NEET institutes with full role-based system for students, faculty, and admins covering tests, assignments, attendance, and AI-powered rank insights.",
 
     video:
       import.meta.env.VITE_CLOUDFRONT_URL +
@@ -167,7 +167,6 @@ const projects = [
 
     tags: [
       "Next.js",
-      "Prisma",
       "PostgreSQL",
       "RBAC",
       "AI Integration",
