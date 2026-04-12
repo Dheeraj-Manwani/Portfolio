@@ -144,6 +144,58 @@ const projects = [
     complexity:
       "Distributed contest system with Redis ranking, websocket broadcasting, and async evaluation workers.",
   },
+
+  {
+    title: "Instructis — Coaching Platform",
+    description:
+      "A production-grade coaching platform for JEE & NEET institutes, combining a public marketing site with a full role-based system for students, faculty, and admins — covering tests, assignments, attendance, and AI-powered rank insights.",
+
+    video:
+      import.meta.env.VITE_CLOUDFRONT_URL +
+      "/static_assets/instructis/instructis-demo.mp4",
+
+    poster:
+      import.meta.env.VITE_CLOUDFRONT_URL +
+      "/instructis/logo.png",
+
+    images: [
+      import.meta.env.VITE_CLOUDFRONT_URL + "/instructis/static_assets/instructis_1.png",
+      import.meta.env.VITE_CLOUDFRONT_URL + "/instructis/static_assets/instructis_classes.png",
+      import.meta.env.VITE_CLOUDFRONT_URL + "/instructis/static_assets/instructis_student_qa.png",
+      import.meta.env.VITE_CLOUDFRONT_URL + "/instructis/static_assets/instructis_auth.png",
+    ],
+
+    tags: [
+      "Next.js",
+      "Prisma",
+      "PostgreSQL",
+      "RBAC",
+      "AI Integration",
+      "S3",
+    ],
+
+    githubUrl: "https://github.com/Dheeraj-Manwani/instructis",
+    liveUrl: "https://instructis.in",
+
+    status: "completed",
+    badge: "Full System Product",
+    color: "primary",
+
+    rotatingText: [
+      { text: "Multi-role system: Student, Faculty, Admin", icon: <Zap className="w-3 h-3" /> },
+      { text: "Mock tests + analytics + rank prediction", icon: <Zap className="w-3 h-3" /> },
+      { text: "Assignments, attendance & fee workflows", icon: <Zap className="w-3 h-3" /> },
+    ],
+
+    highlights: [
+      "End-to-end institute management: batches, tests, assignments, and fees",
+      "Advanced test engine with analytics, percentiles, and reporting",
+      "AI-powered rank prediction with performance insights",
+    ],
+
+    complexity:
+      "Large-scale multi-role education platform with RBAC, analytics pipelines, AI integration, and operational workflows across students, faculty, and admin systems.",
+  }
 ];
 
 

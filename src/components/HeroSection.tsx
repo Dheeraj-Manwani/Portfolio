@@ -141,7 +141,7 @@ const HeroSection = ({ onContactClick }: HeroSectionProps) => {
                 transition={{ duration: 0.8, delay: 0.6 }}
                 className="text-lg md:text-xl text-muted-foreground max-w-lg mx-auto lg:mx-0 leading-relaxed mb-6"
               >
-                A full-stack developer with 2 years of experience building
+                A full-stack developer with 2.5+ years of experience building
                 reliable, clean, efficient solutions with a strong commitment to
                 transparency and collaboration.
               </motion.p>
